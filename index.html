@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Cuts | Premium Ladies Hair Salon | Larch Way, WA</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3D1A1A;
+            --accent: #D4878A;
+            --light: #F9E4E4;
+            --white: #FFFDF9;
+            --text: #2C2C2C;
+            --gold: #C9A86C;
+            --shadow: 0 10px 30px rgba(61, 26, 26, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #c07679;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 135, 138, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 1. Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: transparent;
+            transition: var(--transition);
+            padding: 20px 0;
+        }
+
+        header.scrolled {
+            background-color: white;
+            padding: 12px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* 2. Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(135deg, #F9E4E4 0%, #FFFDF9 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #f9e4e4;
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .trust-stats {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .trust-stats span {
+            margin: 0 12px;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background-color: var(--light);
+            top: -100px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background-color: var(--accent);
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* 3. Trust Bar */
+        .trust-bar {
+            background-color: var(--light);
+            padding: 30px 0;
+            border-top: 1px solid rgba(212, 135, 138, 0.2);
+            border-bottom: 1px solid rgba(212, 135, 138, 0.2);
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .trust-item {
+            flex: 1;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .trust-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            height: 30px;
+            width: 1px;
+            background-color: rgba(61, 26, 26, 0.1);
+        }
+
+        /* 4. About Us */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .stat-boxes {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: var(--light);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(212, 135, 138, 0.2);
+        }
+
+        .stat-box .number {
+            display: block;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 4px;
+        }
+
+        .stat-box .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-image {
+            height: 500px;
+            background: linear-gradient(135deg, #D4878A 0%, #F9E4E4 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '✂️';
+            font-size: 80px;
+            opacity: 0.3;
+        }
+
+        /* 5. Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background-color: white;
+            border: 1px solid #f0d8d8;
+            border-radius: 16px;
+            padding: 32px 24px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 135, 138, 0.15);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent);
+            color: white;
+            transform: rotate(10deg);
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .price-tag {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* 6. How It Works */
+        .how-it-works {
+            background: linear-gradient(to bottom, #F9E4E4, #FFFDF9);
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            gap: 40px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+            box-shadow: 0 5px 15px rgba(212, 135, 138, 0.3);
+        }
+
+        .step-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        .connector {
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            border-top: 2px dashed var(--accent);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* 7. Meet The Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4878A 0%, #F9E4E4 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .team-card:hover .team-photo {
+            box-shadow: 0 0 0 6px var(--accent);
+            transform: scale(1.05);
+        }
+
+        .team-card h3 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .team-card .title {
+            display: block;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .specialty-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background-color: var(--light);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .experience {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* 8. Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .gallery-item:nth-child(odd) { height: 320px; }
+        .gallery-item:nth-child(even) { height: 260px; }
+
+        .gallery-item.g1 { background: linear-gradient(135deg, #D4878A, #F9E4E4); }
+        .gallery-item.g2 { background: linear-gradient(135deg, #C9A86C, #F9E4E4); }
+        .gallery-item.g3 { background: linear-gradient(135deg, #3D1A1A, #D4878A); }
+        .gallery-item.g4 { background: linear-gradient(135deg, #F9E4E4, #D4878A); }
+        .gallery-item.g5 { background: linear-gradient(135deg, #D4878A, #C9A86C); }
+        .gallery-item.g6 { background: linear-gradient(135deg, #3D1A1A, #F9E4E4); }
+
+        .gallery-item i {
+            font-size: 40px;
+            color: white;
+            opacity: 0.6;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(212, 135, 138, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* 9. Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 80px;
+            color: var(--accent);
+            opacity: 0.15;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .client-info h4 {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .client-info span {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* 10. Pricing */
+        .pricing-table-container {
+            overflow-x: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            min-width: 600px;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 20px 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+        }
+
+        td {
+            padding: 20px 30px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        tr.highlighted {
+            border-left: 5px solid var(--accent);
+        }
+
+        .pricing-badge {
+            background-color: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* 11. Booking CTA */
+        .booking-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .booking-cta h2 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .booking-cta p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .booking-cta .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            padding: 18px 45px;
+            font-size: 18px;
+        }
+
+        .booking-cta .btn-primary:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .hours-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hour-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            min-width: 160px;
+        }
+
+        .hour-card h4 {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+
+        .hour-card p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 0;
+            opacity: 1;
+        }
+
+        /* 12. Contact & Location */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info-list {
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .booking-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 135, 138, 0.1);
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-msg {
+            background-color: #2ecc71;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, #F9E4E4 0%, #D4878A 100%);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .map-placeholder i {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .map-placeholder h3 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-tagline {
+            opacity: 0.7;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* Floating Buttons */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .float-book {
+            background-color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .float-call {
+            background-color: var(--primary);
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 135, 138, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(212, 135, 138, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 135, 138, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 48px; }
+            .services-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-col:first-child { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 40px;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero-content h1 { font-size: 36px; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .trust-item::after { display: none; }
+            .steps-container { flex-direction: column; }
+            .connector { display: none; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-padding { padding: 60px 0; }
+            .hero-btns { flex-direction: column; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .services-grid, .team-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Great Cuts</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" class="nav-item active">Home</a></li>
+                    <li><a href="#services" class="nav-item">Services</a></li>
+                    <li><a href="#team" class="nav-item">Team</a></li>
+                    <li><a href="#gallery" class="nav-item">Gallery</a></li>
+                    <li><a href="#pricing" class="nav-item">Pricing</a></li>
+                    <li><a href="#contact" class="nav-item">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+                <div class="mobile-toggle" id="mobile-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="home">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="badge">⭐ Rated #1 Ladies Salon in Lynnwood, WA</span>
+                <h1>Where Every Woman Leaves Beautiful.</h1>
+                <p>Premium hair care for women including cuts, color, styling, and more. Proudly serving Lynnwood, Washington.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Book an Appointment</a>
+                    <a href="#services" class="btn btn-outline">Explore Services</a>
+                </div>
+                <div class="trust-stats">
+                    3,000+ Happy Clients <span>·</span> 10+ Years <span>·</span> 15 Expert Stylists
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Trust Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">⭐ 4.9/5 Google Rating</div>
+                <div class="trust-item">💇 3,000+ Happy Clients</div>
+                <div class="trust-item">🏆 Award-Winning Stylists</div>
+                <div class="trust-item">📍 Walk-ins Welcome · Lynnwood WA</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. About Us -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <h2>About Great Cuts</h2>
+                    <p>At Great Cuts, we believe every woman deserves to feel her absolute best. Our team of skilled stylists brings passion, creativity, and care to every appointment. From classic cuts to bold transformations, we tailor every service to you. You are not just a client, you are our guest.</p>
+                    <div class="stat-boxes">
+                        <div class="stat-box">
+                            <span class="number" data-target="10">0</span>
+                            <span class="label">Years</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="number" data-target="15">0</span>
+                            <span class="label">Stylists</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="number" data-target="3000">0</span>
+                            <span class="label">Clients</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Services -->
+    <section id="services" class="section-padding" style="background-color: #fffdf9;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Services</h2>
+                <p>From everyday cuts to luxury treatments — we do it all.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Women's Haircut</h3>
+                    <p>Precision cut tailored to your face shape and style</p>
+                    <span class="price-tag">From $45</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4s.7 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2"/><path d="M2 10s.7 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2"/><path d="M2 16s.7 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2s.8 2.1 2 2c1.1 0 3-2 3-2"/></svg>
+                    </div>
+                    <h3>Blowout & Style</h3>
+                    <p>Smooth, voluminous, salon-fresh finish every time</p>
+                    <span class="price-tag">From $40</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3>Full Color</h3>
+                    <p>Root-to-tip color transformation with premium dye</p>
+                    <span class="price-tag">From $85</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+                    </div>
+                    <h3>Highlights & Balayage</h3>
+                    <p>Sun-kissed dimension and natural-looking depth</p>
+                    <span class="price-tag">From $120</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Keratin Treatment</h3>
+                    <p>Frizz-free, silky smooth results that last months</p>
+                    <span class="price-tag">From $150</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                    </div>
+                    <h3>Bridal Hair</h3>
+                    <p>Flawless elegant styling for your most special day</p>
+                    <span class="price-tag">From $200</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 7 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Scalp Treatment</h3>
+                    <p>Deep nourishing care for healthy, strong hair growth</p>
+                    <span class="price-tag">From $55</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <!-- Service 8 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3>Girls Haircut</h3>
+                    <p>Gentle, fun and patient styling for little girls</p>
+                    <span class="price-tag">From $25</span>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. How It Works -->
+    <section id="how-it-works" class="section-padding how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Your Salon Experience</h2>
+                <p>Simple, relaxing, and all about you.</p>
+            </div>
+            <div class="steps-container">
+                <div class="connector"></div>
+                <!-- Step 1 -->
+                <div class="step reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📅</div>
+                    <h3>Book Your Visit</h3>
+                    <p>Book online, call us, or simply walk in. We are always happy to see you.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="step reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">💬</div>
+                    <h3>Meet Your Stylist</h3>
+                    <p>Enjoy a personal consultation. We listen to your vision and make it happen.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="step reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✨</div>
+                    <h3>Love Your Look</h3>
+                    <p>Leave feeling refreshed, confident, and absolutely beautiful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Meet The Team -->
+    <section id="team" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Meet Our Stylists</h2>
+                <p>Talented, passionate, and dedicated to you.</p>
+            </div>
+            <div class="team-grid">
+                <!-- Stylist 1 -->
+                <div class="team-card reveal">
+                    <div class="team-photo">AM</div>
+                    <h3>Amanda</h3>
+                    <span class="title">Lead Stylist</span>
+                    <div class="specialty-tags">
+                        <span class="tag">Color</span>
+                        <span class="tag">Balayage</span>
+                    </div>
+                    <span class="experience">10 years experience</span>
+                </div>
+                <!-- Stylist 2 -->
+                <div class="team-card reveal">
+                    <div class="team-photo">PR</div>
+                    <h3>Priya</h3>
+                    <span class="title">Senior Stylist</span>
+                    <div class="specialty-tags">
+                        <span class="tag">Bridal</span>
+                        <span class="tag">Occasion</span>
+                    </div>
+                    <span class="experience">7 years experience</span>
+                </div>
+                <!-- Stylist 3 -->
+                <div class="team-card reveal">
+                    <div class="team-photo">RA</div>
+                    <h3>Rachel</h3>
+                    <span class="title">Stylist</span>
+                    <div class="specialty-tags">
+                        <span class="tag">Cuts</span>
+                        <span class="tag">Keratin</span>
+                    </div>
+                    <span class="experience">5 years experience</span>
+                </div>
+                <!-- Stylist 4 -->
+                <div class="team-card reveal">
+                    <div class="team-photo">SO</div>
+                    <h3>Sofia</h3>
+                    <span class="title">Stylist</span>
+                    <div class="specialty-tags">
+                        <span class="tag">Curly</span>
+                        <span class="tag">Natural</span>
+                    </div>
+                    <span class="experience">4 years experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Gallery -->
+    <section id="gallery" class="section-padding" style="background-color: #fffdf9;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Transformations We Love</h2>
+                <p>Every look is a work of art.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item g1 reveal">
+                    <i>✂️</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+                <div class="gallery-item g2 reveal">
+                    <i>🌸</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+                <div class="gallery-item g3 reveal">
+                    <i>✂️</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+                <div class="gallery-item g4 reveal">
+                    <i>🌸</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+                <div class="gallery-item g5 reveal">
+                    <i>✂️</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+                <div class="gallery-item g6 reveal">
+                    <i>🌸</i>
+                    <div class="gallery-overlay"><span>View Look</span></div>
+                </div>
+            </div>
+            <div style="text-align: center;" class="reveal">
+                <a href="#" class="btn btn-outline">Follow Us on Instagram @greatcutslarchway</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Testimonials -->
+    <section id="testimonials" class="section-padding testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Words From Our Guests</h2>
+                <p>Real experiences from real women.</p>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote-icon">"</div>
+                    <p>"Great service and attention to detail, nice family owned business."</p>
+                    <div class="testimonial-footer">
+                        <div class="avatar">G</div>
+                        <div class="client-info">
+                            <h4>Guest</h4>
+                            <span>Verified Client</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote-icon">"</div>
+                    <p>"This will be my regular go to place for a haircut."</p>
+                    <div class="testimonial-footer">
+                        <div class="avatar">RB</div>
+                        <div class="client-info">
+                            <h4>Ryan Baul</h4>
+                            <span>Verified Client</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote-icon">"</div>
+                    <p>"Highly recommend her style, hair color, hair cuts, and incredible personality."</p>
+                    <div class="testimonial-footer">
+                        <div class="avatar">RR</div>
+                        <div class="client-info">
+                            <h4>Ruby Rayne</h4>
+                            <span>Verified Client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Pricing -->
+    <section id="pricing" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>No hidden fees. No surprises. Just great hair.</p>
+            </div>
+            <div class="pricing-table-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Duration</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Women's Haircut</td>
+                            <td>60 mins</td>
+                            <td>From $45</td>
+                        </tr>
+                        <tr>
+                            <td>Blowout & Style</td>
+                            <td>45 mins</td>
+                            <td>From $40</td>
+                        </tr>
+                        <tr>
+                            <td>Full Color</td>
+                            <td>90 mins</td>
+                            <td>From $85</td>
+                        </tr>
+                        <tr class="highlighted">
+                            <td>Highlights & Balayage <span class="pricing-badge">Most Requested</span></td>
+                            <td>150 mins</td>
+                            <td>From $120</td>
+                        </tr>
+                        <tr>
+                            <td>Keratin Treatment</td>
+                            <td>180 mins</td>
+                            <td>From $150</td>
+                        </tr>
+                        <tr>
+                            <td>Bridal Hair</td>
+                            <td>120 mins</td>
+                            <td>From $200</td>
+                        </tr>
+                        <tr>
+                            <td>Scalp Treatment</td>
+                            <td>45 mins</td>
+                            <td>From $55</td>
+                        </tr>
+                        <tr>
+                            <td>Girls Haircut</td>
+                            <td>30 mins</td>
+                            <td>From $25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="pricing-note reveal">Prices may vary based on hair length and density. A complimentary consultation is always included.</p>
+        </div>
+    </section>
+
+    <!-- 11. Booking CTA -->
+    <section class="section-padding booking-cta">
+        <div class="container">
+            <div class="reveal">
+                <h2>Ready for Your Transformation?</h2>
+                <p>Book your appointment at Great Cuts, Lynnwood's favorite ladies salon.</p>
+                <a href="#contact" class="btn btn-primary">Book My Appointment Now</a>
+            </div>
+            <div class="hours-grid reveal">
+                <div class="hour-card">
+                    <h4>Mon–Sun</h4>
+                    <p>10:00 AM – 7:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Contact & Location -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Visit Us</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="contact-info-list">
+                        <div class="contact-item"><i>📍</i> 1120 164th St SW E, Lynnwood, WA 98087</div>
+                        <div class="contact-item"><i>📞</i> +1 425-275-8580</div>
+                        <div class="contact-item"><i>📧</i> hello@greatcutssalon.com</div>
+                        <div class="contact-item"><i>🕐</i> Open Daily: 10am–7pm</div>
+                        <div class="contact-item"><i>📷</i> @greatcutslarchway</div>
+                    </div>
+
+                    <form class="booking-form" id="booking-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                            <div class="error-msg" id="name-error">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="(555) 000-0000">
+                            <div class="error-msg" id="phone-error">Please enter your phone number</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a Service</option>
+                                <option value="haircut">Women's Haircut</option>
+                                <option value="blowout">Blowout & Style</option>
+                                <option value="color">Full Color</option>
+                                <option value="highlights">Highlights & Balayage</option>
+                                <option value="keratin">Keratin Treatment</option>
+                                <option value="bridal">Bridal Hair</option>
+                                <option value="scalp">Scalp Treatment</option>
+                                <option value="girls">Girls Haircut</option>
+                            </select>
+                            <div class="error-msg" id="service-error">Please select a service</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" class="form-control">
+                            <div class="error-msg" id="date-error">Please select a date</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+                    </form>
+                    <div class="success-msg" id="success-msg">
+                        Thank you! We will contact you shortly.
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="map-placeholder">
+                        <i>📍</i>
+                        <h3>Lynnwood, Washington</h3>
+                        <p style="margin-bottom: 20px;">1120 164th St SW E</p>
+                        <a href="#" class="btn btn-outline" style="border-color: white; color: white;">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <span class="logo footer-logo">Great Cuts</span>
+                    <p class="footer-tagline">"Beauty is not a luxury, it is self-care."</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">👍</a>
+                        <a href="#" class="social-icon">📌</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>📍 1120 164th St SW E, Lynnwood, WA</li>
+                        <li>📞 +1 425-275-8580</li>
+                        <li>📧 hello@greatcutssalon.com</li>
+                        <li>🕐 Mon–Sun 10AM–7PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Great Cuts · Lynnwood, Washington · All Rights Reserved.</p>
+                <p>Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="#contact" class="float-btn float-book">📅</a>
+    </div>
+    <a href="tel:4255550199" class="float-btn float-call">📞</a>
+
+    <script>
+        // 1. Sticky Nav
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when link is clicked
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            });
+        });
+
+        // 4. IntersectionObserver for Reveal Animations
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Stagger children if it's a grid
+                    if (entry.target.classList.contains('services-grid') || entry.target.classList.contains('team-grid')) {
+                        const children = entry.target.querySelectorAll('.reveal');
+                        children.forEach((child, index) => {
+                            setTimeout(() => {
+                                child.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+
+                    // Trigger counter if it's the about section
+                    if (entry.target.id === 'about') {
+                        startCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, section').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // 5. Active Nav Link Highlighting
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // 6. Booking Form Validation
+        const bookingForm = document.getElementById('booking-form');
+        const successMsg = document.getElementById('success-msg');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            const fields = [
+                { id: 'name', errorId: 'name-error' },
+                { id: 'phone', errorId: 'phone-error' },
+                { id: 'service', errorId: 'service-error' },
+                { id: 'date', errorId: 'date-error' }
+            ];
+
+            fields.forEach(field => {
+                const input = document.getElementById(field.id);
+                const error = document.getElementById(field.errorId);
+                
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#e74c3c';
+                    error.style.display = 'block';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#ddd';
+                    error.style.display = 'none';
+                }
+            });
+
+            if (isValid) {
+                bookingForm.style.display = 'none';
+                successMsg.style.display = 'block';
+                // Reset form
+                bookingForm.reset();
+            }
+        });
+
+        // 8. Counter Animation
+        let countersStarted = false;
+        function startCounters() {
+            if (countersStarted) return;
+            countersStarted = true;
+            
+            const counters = document.querySelectorAll('.number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                let currentCount = 0;
+                const updateCount = () => {
+                    currentCount += increment;
+                    if (currentCount < target) {
+                        counter.innerText = Math.ceil(currentCount) + (target > 100 ? '+' : '+');
+                        if (target === 10) counter.innerText = Math.ceil(currentCount) + '+';
+                        if (target === 15) counter.innerText = Math.ceil(currentCount);
+                        if (target === 3000) counter.innerText = Math.ceil(currentCount).toLocaleString() + '+';
+                        
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        if (target === 10) counter.innerText = '10+';
+                        if (target === 15) counter.innerText = '15';
+                        if (target === 3000) counter.innerText = '3,000+';
+                    }
+                };
+                updateCount();
+            });
+        }
+    </script>
+</body>
+</html>
