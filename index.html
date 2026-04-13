@@ -63,6 +63,12 @@
             padding: 100px 0;
         }
 
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -159,6 +165,7 @@
         .nav-links {
             display: flex;
             gap: 32px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -1067,12 +1074,18 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-content h1 { font-size: 48px; }
-            .services-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .footer-col:first-child { grid-column: span 2; }
+            .about-grid { gap: 40px; }
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -1081,29 +1094,122 @@
                 width: 100%;
                 background-color: white;
                 flex-direction: column;
-                padding: 40px;
+                padding: 30px;
                 text-align: center;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                z-index: 1001;
             }
 
-            .nav-links.active { display: flex; }
-            .mobile-toggle { display: block; }
+            .nav-links.active { 
+                display: flex; 
+            }
+
+            .mobile-toggle { 
+                display: block; 
+                order: 3;
+            }
+
+            header .btn-primary {
+                display: none; /* Hide the book now button in header on mobile to save space */
+            }
+
             .hero-content h1 { font-size: 36px; }
-            .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .hero-content p { font-size: 18px; }
+            
+            .about-grid, .contact-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px;
+            }
+
+            .about-image {
+                height: 350px;
+                order: -1; /* Image first on mobile */
+            }
+
+            .trust-grid { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 20px; 
+            }
+            
             .trust-item::after { display: none; }
-            .steps-container { flex-direction: column; }
+            
+            .steps-container { 
+                flex-direction: column; 
+                gap: 30px;
+            }
+            
             .connector { display: none; }
+            
             .testimonial-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .section-padding { padding: 60px 0; }
-            .hero-btns { flex-direction: column; }
+            
+            .gallery-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 15px;
+            }
+
+            .booking-cta h2 { font-size: 32px; }
+            
+            .hours-grid {
+                margin-top: 40px;
+            }
+
+            .hour-card {
+                min-width: 140px;
+                padding: 15px;
+            }
+
+            .contact-info-list {
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+
+            .booking-form {
+                padding: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-col:first-child {
+                grid-column: span 1;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-contact li {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
+            .hero-content h1 { font-size: 32px; }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-btns .btn {
+                width: 100%;
+            }
+            .trust-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
             .services-grid, .team-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .stat-boxes {
+                flex-direction: column;
+            }
+            .section-header h2 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
@@ -1556,45 +1662,52 @@
                         <div class="contact-item"><i>📷</i> @greatcutslarchway</div>
                     </div>
 
-                    <form class="booking-form" id="booking-form">
+                    <form class="booking-form" id="booking-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="95f23800-a374-4e07-bfde-e26735b52225">
+                        <input type="hidden" name="subject" value="New Appointment Request from Great Cuts">
+                        <input type="hidden" name="from_name" value="Great Cuts Website">
+                        
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
                             <div class="error-msg" id="name-error">Please enter your name</div>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="(555) 000-0000">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(555) 000-0000" required>
                             <div class="error-msg" id="phone-error">Please enter your phone number</div>
                         </div>
                         <div class="form-group">
                             <label for="service">Service</label>
-                            <select id="service" class="form-control">
+                            <select id="service" name="service" class="form-control" required>
                                 <option value="">Select a Service</option>
-                                <option value="haircut">Women's Haircut</option>
-                                <option value="blowout">Blowout & Style</option>
-                                <option value="color">Full Color</option>
-                                <option value="highlights">Highlights & Balayage</option>
-                                <option value="keratin">Keratin Treatment</option>
-                                <option value="bridal">Bridal Hair</option>
-                                <option value="scalp">Scalp Treatment</option>
-                                <option value="girls">Girls Haircut</option>
+                                <option value="Women's Haircut">Women's Haircut</option>
+                                <option value="Blowout & Style">Blowout & Style</option>
+                                <option value="Full Color">Full Color</option>
+                                <option value="Highlights & Balayage">Highlights & Balayage</option>
+                                <option value="Keratin Treatment">Keratin Treatment</option>
+                                <option value="Bridal Hair">Bridal Hair</option>
+                                <option value="Scalp Treatment">Scalp Treatment</option>
+                                <option value="Girls Haircut">Girls Haircut</option>
                             </select>
                             <div class="error-msg" id="service-error">Please select a service</div>
                         </div>
                         <div class="form-group">
                             <label for="date">Preferred Date</label>
-                            <input type="date" id="date" class="form-control">
+                            <input type="date" id="date" name="date" class="form-control" required>
                             <div class="error-msg" id="date-error">Please select a date</div>
                         </div>
                         <div class="form-group">
                             <label for="message">Message (Optional)</label>
-                            <textarea id="message" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Send Request</button>
                     </form>
                     <div class="success-msg" id="success-msg">
                         Thank you! We will contact you shortly.
+                    </div>
+                    <div id="error-msg-general" style="color: #e74c3c; text-align: center; margin-top: 15px; display: none;">
+                        Something went wrong. Please try again or call us directly.
                     </div>
                 </div>
                 <div class="reveal">
@@ -1737,11 +1850,13 @@
             });
         });
 
-        // 6. Booking Form Validation
+        // 6. Booking Form Validation & Submission
         const bookingForm = document.getElementById('booking-form');
         const successMsg = document.getElementById('success-msg');
+        const submitBtn = document.getElementById('submit-btn');
+        const generalError = document.getElementById('error-msg-general');
 
-        bookingForm.addEventListener('submit', (e) => {
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             let isValid = true;
 
@@ -1766,11 +1881,42 @@
                 }
             });
 
-            if (isValid) {
-                bookingForm.style.display = 'none';
-                successMsg.style.display = 'block';
-                // Reset form
-                bookingForm.reset();
+            if (!isValid) return;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+            generalError.style.display = 'none';
+
+            const formData = new FormData(bookingForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                const result = await response.json();
+
+                if (response.status == 200) {
+                    bookingForm.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    successMsg.innerText = 'Thank you! Your appointment request has been sent.';
+                    bookingForm.reset();
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Booking error:', error);
+                generalError.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Send Request';
             }
         });
 
