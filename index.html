@@ -885,6 +885,22 @@
             margin-bottom: 20px;
         }
 
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
         .form-group label {
             display: block;
             font-size: 14px;
@@ -1692,10 +1708,16 @@
                             </select>
                             <div class="error-msg" id="service-error">Please select a service</div>
                         </div>
-                        <div class="form-group">
-                            <label for="date">Preferred Date</label>
-                            <input type="date" id="date" name="date" class="form-control" required>
-                            <div class="error-msg" id="date-error">Please select a date</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" class="form-control" required>
+                                <div class="error-msg" id="date-error">Please select a date</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Preferred Time (Optional)</label>
+                                <input type="time" id="time" name="time" class="form-control">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="message">Message (Optional)</label>
